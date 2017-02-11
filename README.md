@@ -23,6 +23,7 @@ SubLime lets you choose which markup you want to keep, and which you want to fil
 
  - Automatically looks for uncleaned subs on playback start
  - Automatically start cleaning process when playback starts *
+ - Automatically start cleaning process when playback resume *
  - Automatically save a backup of the original file *
  - Remove Hearing Impaired (HI) tags *
  - Remove line prefixes (dashes & text before colon) *
@@ -36,6 +37,7 @@ SubLime lets you choose which markup you want to keep, and which you want to fil
 **General**
 
 - **Start cleaning automatically** [true]:Don't wait for user confirmation
+- **Clean automatically on video resume** [true]:Usefull for cleaning automatically when subtitle have been downloaded
 - **Only clean subs for current video** [true]: When set to false, Sublime will look for all subs in the folder
 - **Back up original file** [true]: Save a copy of the subtitle before cleaning
 
