@@ -100,6 +100,7 @@ class Sublime(xbmc.Player):
 
         self.show_notifications = self.getSetting("show_notifications",True)
         self.auto_start         = self.getSetting("auto_start",True)
+        self.auto_resume        = self.getSetting("auto_resume",True)
         self.current_only       = self.getSetting("current_only",True)
 
         # filter settings
@@ -370,16 +371,7 @@ class Sublime(xbmc.Player):
 
         return True
 
-    def onPlayBackResumed(self):
-        self.wait = False
-
-    def onPlayBackStopped(self):
-        self.wait = False
-
-    def onPlayBackEnded(self):
-        self.wait = False
-
-    def onPlayBackStarted(self):
+    def preClean(self):
         self.init_properties()
 
         if len(self.externalAddons) > 0:
@@ -452,6 +444,19 @@ class Sublime(xbmc.Player):
 
         else:
             log("Nothing to do")
+
+    def onPlayBackResumed(self):
+        if self.auto_resume == True:
+            self.preClean()
+
+    def onPlayBackStopped(self):
+        self.wait = False
+
+    def onPlayBackEnded(self):
+        self.wait = False
+
+    def onPlayBackStarted(self):
+        self.preClean()
 
 monitor = Sublime()
 
